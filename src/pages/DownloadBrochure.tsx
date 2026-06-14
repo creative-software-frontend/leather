@@ -78,10 +78,11 @@ const DownloadBrochure: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'linear-gradient(135deg, #0D0D1A 0%, #1a237e 50%, #0D0D1A 100%)' }}>
-
+    <div className="min-h-screen flex flex-col bg-drifting-texture relative">
+      <div className="absolute inset-0 backdrop-panel-overlay z-0"></div>
+      
       {/* Hero Section */}
-      <div className="flex-1 flex items-center justify-center px-4 pt-28 pb-16">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4 pt-28 pb-16">
         <div className="w-full max-w-3xl">
 
           {/* Card */}
@@ -90,17 +91,17 @@ const DownloadBrochure: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="rounded-3xl overflow-hidden"
-            style={{ background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(24px)', border: '1px solid rgba(201,168,76,0.25)' }}
+            style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(24px)', border: '1px solid rgba(176,90,40,0.25)' }}
           >
-            {/* Gold top bar */}
-            <div className="h-1.5" style={{ background: 'linear-gradient(90deg, #1a237e, #C9A84C, #1a237e)' }} />
+            {/* Rust top bar */}
+            <div className="h-1.5" style={{ background: 'linear-gradient(90deg, #120800, #B05A28, #120800)' }} />
 
             <div className="p-8 sm:p-12">
               {/* Logo + Badge */}
               <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
-                <img src={logoImg} alt="Logo" className="w-16 h-16 rounded-full object-contain bg-white border-2 border-yellow-400/50 shadow-lg" style={{ padding: '4px' }} />
+                <img src={logoImg} alt="Logo" className="w-16 h-16 rounded-full object-contain bg-white border-2 border-primary-rust/50 shadow-lg" style={{ padding: '4px' }} />
                 <div className="text-center sm:text-left">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-1" style={{ background: 'rgba(201,168,76,0.2)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.4)' }}>
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-1" style={{ background: 'rgba(176,90,40,0.2)', color: 'var(--color-primary-rust-light)', border: '1px solid rgba(176,90,40,0.4)' }}>
                     {c.badge}
                   </span>
                   <h1 className="text-2xl sm:text-3xl font-black text-white leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
@@ -125,10 +126,10 @@ const DownloadBrochure: React.FC = () => {
               </div>
 
               {/* Stats row */}
-              <div className="grid grid-cols-3 gap-4 mb-8 py-5 rounded-2xl" style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)' }}>
+              <div className="grid grid-cols-3 gap-4 mb-8 py-5 rounded-2xl" style={{ background: 'rgba(176,90,40,0.08)', border: '1px solid rgba(176,90,40,0.2)' }}>
                 {c.stats.map((s) => (
                   <div key={s.label} className="text-center">
-                    <div className="text-2xl font-black" style={{ color: '#C9A84C' }}>{s.value}</div>
+                    <div className="text-2xl font-black text-primary-rust-light">{s.value}</div>
                     <div className="text-white/60 text-xs mt-0.5">{s.label}</div>
                   </div>
                 ))}
@@ -136,7 +137,7 @@ const DownloadBrochure: React.FC = () => {
 
               {/* Auto-download notice */}
               <div className="flex items-center gap-2 mb-5 text-center justify-center">
-                <span className={`w-2 h-2 rounded-full ${downloaded ? 'bg-green-400' : 'bg-yellow-400 animate-pulse'}`} />
+                <span className={`w-2 h-2 rounded-full ${downloaded ? 'bg-green-400' : 'bg-primary-rust animate-pulse'}`} />
                 <span className="text-white/50 text-xs">
                   {downloaded ? (lang === 'EN' ? '✓ Download started!' : '✓ ডাউনলোড শুরু হয়েছে!') : c.autoLabel}
                 </span>
@@ -147,10 +148,10 @@ const DownloadBrochure: React.FC = () => {
                 onClick={handleManualDownload}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 rounded-2xl font-black text-sm tracking-wider uppercase text-black mb-3 transition-all"
+                className="w-full py-4 rounded-2xl font-black text-sm tracking-wider uppercase text-white mb-3 transition-all"
                 style={{
-                  background: 'linear-gradient(135deg, #C9A84C 0%, #fcd34d 50%, #C9A84C 100%)',
-                  boxShadow: '0 8px 32px rgba(201,168,76,0.45)',
+                  background: 'linear-gradient(135deg, var(--color-primary-rust) 0%, var(--color-primary-rust-light) 50%, var(--color-primary-rust) 100%)',
+                  boxShadow: '0 8px 32px var(--color-primary-rust-glow)',
                 }}
               >
                 {c.dlBtn}

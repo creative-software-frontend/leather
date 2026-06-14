@@ -16,12 +16,12 @@ export const UI = {
   /* ─── WHY US PAGE ────────────────────────────────────────────────── */
   whyUs: {
     heroTitle: { en: 'Why Choose US?', bn: 'কেন আমাদের বেছে নেবেন?' },
-    
+
     empower: {
       title: { en: 'Empower Your Business With Our Solutions', bn: 'আমাদের সমাধানের মাধ্যমে আপনার ব্যবসাকে শক্তিশালী করুন' },
       desc: { en: "We're in the business of providing best ITeS services whether you use our simplified products, solutions, or both, we will take care of your business needs.", bn: 'আমরা সেরা আইটিইএস (ITeS) পরিষেবা প্রদানের ব্যবসায় নিয়োজিত। আপনি আমাদের সরলীকৃত পণ্য, সমাধান বা উভয়ই ব্যবহার করুন না কেন, আমরা আপনার ব্যবসায়িক চাহিদার যত্ন নেব।' }
     },
-    
+
     expertise: {
       label: { en: 'Area of our Expertise', bn: 'আমাদের দক্ষতার ক্ষেত্র' },
       title: { en: 'Conduct Admirable Product Management', bn: 'প্রশংসনীয় পণ্য ব্যবস্থাপনা পরিচালনা' },
@@ -210,15 +210,50 @@ export const UI = {
   nav: {
     home: { en: 'Home', bn: 'হোম' },
     company: { en: 'Company', bn: 'কোম্পানি' },
-    whyUs: { en: 'Why Us', bn: 'কেন আমরা' },
     aboutUs: { en: 'About Us', bn: 'আমাদের সম্পর্কে' },
-    ourTeams: { en: 'Our Teams', bn: 'আমাদের দল' },
-    career: { en: 'Career', bn: 'ক্যারিয়ার' },
-    projects: { en: 'Projects', bn: 'প্রকল্প' },
+    gallery: { en: 'Gallery', bn: 'গ্যালারি' },
+    quality: { en: 'Quality', bn: 'মান' },
+    products: { en: 'Products', bn: 'পণ্য' },
     news: { en: 'News', bn: 'সংবাদ' },
+    downloads: { en: 'Downloads', bn: 'ডাউনলোড' },
     contact: { en: 'Contact', bn: 'যোগাযোগ' },
+    wetBlueSplits: { en: 'Wet Blue Splits', bn: 'ওয়েট ব্লু স্প্লিটস' },
+    cowCrustLeather: { en: 'Cow Crust Leather', bn: 'কাউ ক্রাস্ট লেদার' },
+    goatCrustLeather: { en: 'Goat Crust Leather', bn: 'গোট ক্রাস্ট লেদার' },
+    finishLeather: { en: 'Finish Leather', bn: 'ফিনিশ লেদার' },
+    shoeSection: { en: 'Shoe', bn: 'শু সেকশন' },
     downloadBrochure: { en: 'Download Brochure', bn: 'ব্রশিউর ডাউনলোড' },
-    bookNow: { en: 'BOOK NOW →', bn: 'এখনই বুক করুন →' },
+  },
+
+  /* ─── CATEGORY SECTION ──────────────────────────────────────────── */
+  category: {
+    typesAndSizing: { en: 'Types & Sizing', bn: 'প্রকার এবং সাইজিং' },
+    applicationAndFeatures: { en: 'Application & Features', bn: 'অ্যাপ্লিকেশন এবং বৈশিষ্ট্য' },
+    qualityStandards: { en: 'Quality Standards', bn: 'মানের মানদণ্ড' },
+    applications: {
+      belt: { en: 'Belt', bn: 'বেল্ট' },
+      gloves: { en: 'Gloves', bn: 'গ্লাভস' },
+      puCoating: { en: 'PU Coating', bn: 'পিইউ কোটিং' },
+      innerLining: { en: 'Inner Lining', bn: 'ইনার লাইনিং' },
+      aprons: { en: 'Aprons', bn: 'অ্যাপ্রন' },
+      boots: { en: 'Boots', bn: 'বুট জুতো' },
+      saddle: { en: 'Saddle', bn: 'স্যাডল' },
+      shoeUpper: { en: 'Shoe Upper', bn: 'জুতার ওপরের অংশ' },
+      bags: { en: 'Bags', bn: 'ব্যাগ' },
+    },
+    sizing: {
+      fiveSft: { en: '5 sft up all single/double butts', bn: 'সাইজ: ৫ এসএফটি আপ ডাবল বাট' },
+      sevenSft: { en: '7 sft up', bn: 'সাইজ: ৭ এসএফটি আপ' },
+      nineTenSft: { en: '9/10 sft up', bn: 'সাইজ: ৯/১০ এসএফটি আপ' },
+      thickness11: { en: '1.1 mm up', bn: 'পুরুত্ব: ১.১ মিমি আপ' },
+      thickness12: { en: '1.2 mm up', bn: 'পুরুত্ব: ১.২ মিমি আপ' },
+      thickness14: { en: '1.4 mm up', bn: 'পুরুত্ব: ১.৪ মিমি আপ' },
+      thickness16: { en: '1.6 mm up', bn: 'পুরুত্ব: ১.৬ মিমি আপ' },
+    },
+    qualityControl: {
+      en: 'No Knife Cuts | No Attached Shoulder | No Holes | Well Trimmed | No Belly | No Mould | Very Smooth Fiber | No Vin Marks',
+      bn: 'নাইফ কাট মুক্ত | আলাদা শোল্ডার বর্জিত | ছিদ্রহীন চামড়া | সুচারুভাবে ট্রিমকৃত | বেলি অংশ বর্জিত | ছত্রাক মুক্ত | অত্যন্ত মসৃণ ফাইবার | কোনো ভিন মার্ক নেই',
+    }
   },
 } as const;
 

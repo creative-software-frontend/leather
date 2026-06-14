@@ -1,9 +1,38 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { NAV_LINKS } from '../data/landingData';
 import logoImg from '../assets/image/logo.png';
 import logo from '../assets/image/logo2.png';
 import LanguageToggle from './LanguageToggle';
+import { useLanguage } from '../context/LanguageContext';
+import { UI, pick } from '../data/translations';
+
+// Bilingual nav structure — labels come from translations, hrefs stay static
+const getNavLinks = (lang: 'EN' | 'BN') => [
+  { label: pick(UI.nav.home, lang), href: '/' },
+  {
+    label: pick(UI.nav.company, lang),
+    href: '#',
+    children: [
+      { label: pick(UI.nav.aboutUs, lang), href: '/about' },
+      { label: pick(UI.nav.quality, lang), href: '/quality' },
+      { label: pick(UI.nav.gallery, lang), href: '/gallery' },
+    ],
+  },
+  {
+    label: pick(UI.nav.products, lang),
+    href: '#',
+    children: [
+      { label: pick(UI.nav.wetBlueSplits, lang), href: '/category/wet-blue-splits' },
+      { label: pick(UI.nav.cowCrustLeather, lang), href: '/category/cow-crust-leather' },
+      { label: pick(UI.nav.goatCrustLeather, lang), href: '/category/goat-crust-leather' },
+      { label: pick(UI.nav.finishLeather, lang), href: '/category/finish-leather' },
+    ],
+  },
+  { label: pick(UI.nav.shoeSection, lang), href: '/category/shoe-section' },
+  { label: pick(UI.nav.news, lang), href: '/news' },
+  { label: pick(UI.nav.contact, lang), href: '/contact' },
+  { label: pick(UI.nav.downloadBrochure, lang), href: '/download-brochure' },
+];
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -15,6 +44,9 @@ const Navbar: React.FC = () => {
   const navRef = useRef<HTMLElement>(null);
   const dropRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<number | null>(null);
+  const { lang } = useLanguage();
+
+  const NAV_LINKS = getNavLinks(lang);
 
   const handleMouseEnter = (label: string) => {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
@@ -130,8 +162,8 @@ const Navbar: React.FC = () => {
 
             if (hasChildren) {
               return (
-                <li 
-                  key={link.label} 
+                <li
+                  key={link.label}
                   className="relative group"
                   onMouseEnter={() => handleMouseEnter(link.label)}
                   onMouseLeave={handleMouseLeave}
@@ -141,7 +173,7 @@ const Navbar: React.FC = () => {
                     onClick={(e) => { e.preventDefault(); setOpenDropdown(link.label); }}
                     className={`flex items-center gap-1 px-3 py-2 rounded-full text-sm font-semibold transition-all duration-300
                       ${isLight
-                        ? 'text-gray-700 hover:text-navy-500 hover:bg-navy-50'
+                        ? 'text-primary-rust hover:text-primary-rust-dark hover:bg-primary-rust-glow'
                         : 'text-white/90 hover:text-white hover:bg-white/15'}
                       border border-transparent`}
                   >
@@ -160,33 +192,33 @@ const Navbar: React.FC = () => {
                     <div className="w-52 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                       {/* Gold accent bar */}
                       <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg,#1a237e,#C9A84C)' }} />
-                    <div className="py-2">
-                      {link.children!.map((child) => (
-                        <a
-                          key={child.label}
-                          href={getHref(child.href)}
-                          id={`nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}
-                          onClick={(e) => {
-                            if (child.href.startsWith('#') || child.href.includes('#')) {
-                              e.preventDefault();
-                              const hash = child.href.includes('#') ? '#' + child.href.split('#')[1] : child.href;
-                              if (child.href.startsWith('/') && child.href.includes('#')) {
-                                navigate(child.href);
+                      <div className="py-2">
+                        {link.children!.map((child) => (
+                          <a
+                            key={child.label}
+                            href={getHref(child.href)}
+                            id={`nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}
+                            onClick={(e) => {
+                              if (child.href.startsWith('#') || child.href.includes('#')) {
+                                e.preventDefault();
+                                const hash = child.href.includes('#') ? '#' + child.href.split('#')[1] : child.href;
+                                if (child.href.startsWith('/') && child.href.includes('#')) {
+                                  navigate(child.href);
+                                } else {
+                                  handleLinkClick(hash);
+                                }
                               } else {
-                                handleLinkClick(hash);
+                                setOpenDropdown(null);
                               }
-                            } else {
-                              setOpenDropdown(null);
-                            }
-                          }}
-                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-navy-50 hover:text-navy-600 transition-colors duration-200 group/link"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 opacity-0 group-hover/link:opacity-100 transition-opacity duration-200 flex-shrink-0" />
-                          {child.label}
-                        </a>
-                      ))}
+                            }}
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-primary-rust hover:bg-primary-rust-glow hover:text-primary-rust-dark transition-colors duration-200 group/link"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 opacity-0 group-hover/link:opacity-100 transition-opacity duration-200 flex-shrink-0" />
+                            {child.label}
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  </div>
                   </div>
                 </li>
               );
@@ -205,11 +237,11 @@ const Navbar: React.FC = () => {
                   }}
                   className={`px-3 py-2 rounded-full text-sm font-semibold transition-all duration-300
                     ${isLight
-                      ? 'text-gray-700 hover:text-navy-500 hover:bg-navy-50'
+                      ? 'text-primary-rust hover:text-primary-rust-dark hover:bg-primary-rust-glow'
                       : 'text-white/90 hover:text-white hover:bg-white/15'}
                     ${isActive
                       ? isLight
-                        ? 'text-navy-600 font-bold bg-navy-50/80 shadow-sm border border-navy-100/50'
+                        ? 'text-primary-rust-dark font-bold bg-primary-rust-glow shadow-sm border border-primary-rust-light'
                         : 'text-white font-bold bg-white/20 shadow-sm border border-white/25'
                       : 'border border-transparent'}`}
                 >
@@ -235,14 +267,6 @@ const Navbar: React.FC = () => {
           {/* Neo-Brutalist Language Toggle */}
           <LanguageToggle />
 
-          {/* Book Now CTA */}
-          <button
-            onClick={() => navigate('/send-message')}
-            id="nav-book-btn"
-            className="btn-gold text-xs font-bold px-5 py-2.5 whitespace-nowrap"
-          >
-            BOOK NOW →
-          </button>
         </div>
 
         {/* ── MOBILE hamburger ── */}
@@ -273,7 +297,7 @@ const Navbar: React.FC = () => {
                   <div key={link.label}>
                     <button
                       onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
-                      className="w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium text-gray-700 hover:bg-navy-50 hover:text-navy-600 transition-colors duration-200"
+                      className="w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium text-primary-rust hover:bg-primary-rust-glow hover:text-primary-rust-dark transition-colors duration-200"
                     >
                       <span>{link.label}</span>
                       <svg
@@ -303,7 +327,7 @@ const Navbar: React.FC = () => {
                                 setMenuOpen(false);
                               }
                             }}
-                            className="block px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-navy-50 hover:text-navy-600 transition-colors duration-200"
+                            className="block px-3 py-2.5 rounded-lg text-sm text-primary-rust hover:bg-primary-rust-glow hover:text-primary-rust-dark transition-colors duration-200"
                           >
                             {child.label}
                           </a>
@@ -326,8 +350,8 @@ const Navbar: React.FC = () => {
                   }}
                   className={`block px-4 py-3 rounded-xl font-medium transition-colors duration-200
                     ${isActive
-                      ? 'bg-navy-50 text-navy-600 font-bold'
-                      : 'text-gray-700 hover:bg-navy-50 hover:text-navy-600'}`}
+                      ? 'bg-primary-rust-glow text-primary-rust font-bold'
+                      : 'text-primary-rust hover:bg-primary-rust-glow hover:text-primary-rust-dark'}`}
                 >
                   {link.label}
                 </a>
@@ -340,12 +364,6 @@ const Navbar: React.FC = () => {
               <LanguageToggle />
             </div>
 
-            <button
-              onClick={() => { navigate('/send-message'); setMenuOpen(false); }}
-              className="btn-gold text-center mt-2 w-full"
-            >
-              BOOK NOW →
-            </button>
           </div>
         </div>
       </div>

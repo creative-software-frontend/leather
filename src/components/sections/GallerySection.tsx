@@ -56,7 +56,7 @@ const GallerySection: React.FC = () => {
   }, [lightbox]);
 
   return (
-    <section id="gallery" className="pt-0 pb-12" style={{ background: 'linear-gradient(180deg,#ffffff 0%,#f0f4ff 100%)' }}>
+    <section id="gallery" className="pt-0 pb-12" style={{ background: 'linear-gradient(180deg, #1a0f06 0%, #120800 100%)' }}>
       <div className="gs-container">
 
         {/* Heading */}
@@ -67,11 +67,11 @@ const GallerySection: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <span className="section-label">Visual Showcase</span>
-          <h2 className="section-title">Project Image Gallery</h2>
-          <div className="gold-divider mx-auto" />
-          <p className="section-subtitle mx-auto mt-4">
-            Explore our stunning collection of architectural renders and real imagery from our premium hotel and Hotel developments.
+          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-primary-rust-light">Visual Showcase</span>
+          <h2 className="text-3xl font-bold mb-4 text-white">Product Image Gallery</h2>
+          <div className="w-16 h-1 rounded-full my-4 mx-auto bg-primary-rust" />
+          <p className="text-gray-500 text-base max-w-2xl mx-auto mt-4">
+            Explore our premium leather collection — Wet Blue, Crust, Finish Leather and more.
           </p>
         </motion.div>
 
@@ -103,11 +103,8 @@ const GallerySection: React.FC = () => {
               {/* Hover overlay */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-400
                               flex flex-col items-start justify-end p-4"
-                style={{ background: 'linear-gradient(0deg, rgba(13,13,26,0.85) 0%, rgba(26,35,126,0.40) 60%, transparent 100%)' }}>
-                <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold mb-2 tracking-wider uppercase"
-                  style={{ background: 'linear-gradient(135deg,#C9A84C,#fde68a)', color: '#0D0D1A' }}>
-                  {item.tag}
-                </span>
+                style={{ background: 'linear-gradient(0deg, rgba(18,8,0,0.9) 0%, rgba(176,90,40,0.40) 60%, transparent 100%)' }}>
+                <span className="badge-modern-primary text-[10px] mb-2">{item.tag}</span>
                 <p className="text-white text-sm font-semibold leading-tight">{item.title}</p>
                 <span className="text-white/60 text-xs mt-1">Click to expand ↗</span>
               </div>
@@ -145,10 +142,7 @@ const GallerySection: React.FC = () => {
               {/* Caption */}
               <div className="mt-4 flex items-center justify-between px-2">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold mr-3 tracking-wider uppercase"
-                    style={{ background: 'linear-gradient(135deg,#C9A84C,#fde68a)', color: '#0D0D1A' }}>
-                    {GALLERY[lightbox].tag}
-                  </span>
+                  <span className="badge-modern-primary text-xs mr-3">{GALLERY[lightbox].tag}</span>
                   <span className="text-white font-semibold">{GALLERY[lightbox].title}</span>
                 </div>
                 <span className="text-white/50 text-sm">{lightbox + 1} / {GALLERY.length}</span>
@@ -159,7 +153,7 @@ const GallerySection: React.FC = () => {
                 onClick={close}
                 id="gallery-lightbox-close"
                 className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-black/60 text-white text-xl
-                           flex items-center justify-center hover:bg-gold-500 transition-colors duration-300"
+                           flex items-center justify-center hover:bg-primary-rust transition-colors duration-300"
               >
                 ×
               </button>

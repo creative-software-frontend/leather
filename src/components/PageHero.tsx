@@ -22,7 +22,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, imageSrc }) => {
           alt={title}
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg,rgba(10,10,30,0.85),rgba(26,35,126,0.75))' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(18,8,0,0.88), rgba(169,74,26,0.75))' }} />
       </motion.div>
 
       {/* Text Content with Staggered Fade Up */}
@@ -41,7 +41,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, imageSrc }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           className="font-bold tracking-widest text-sm md:text-base mt-4 uppercase"
-          style={{ color: '#C9A84C' }}
+          style={{ color: 'var(--color-primary-rust-light)' }}
         >
           {subtitle}
         </motion.p>

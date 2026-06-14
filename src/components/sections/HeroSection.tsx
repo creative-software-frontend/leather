@@ -53,9 +53,9 @@ const HeroSection: React.FC = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Overlay gradient */}
+      {/* Overlay gradient — rust brown brand tones */}
       <div className="absolute inset-0 z-10"
-           style={{ background: 'linear-gradient(135deg, rgba(26,35,126,0.78) 0%, rgba(13,13,26,0.55) 60%, rgba(201,168,76,0.20) 100%)' }} />
+           style={{ background: 'linear-gradient(135deg, rgba(169,74,26,0.82) 0%, rgba(18,18,18,0.60) 60%, rgba(176,90,40,0.25) 100%)' }} />
 
       {/* Content */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
@@ -73,7 +73,7 @@ const HeroSection: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="gs-badge mb-6 text-sm"
+              className="badge-modern-primary mb-6 text-sm"
             >
               ✦ {slide.badge}
             </motion.span>
@@ -114,12 +114,13 @@ const HeroSection: React.FC = () => {
                    }
                  }}
                  id={`hero-cta-${slide.id}`}
-                 className="btn-gold font-bold text-base px-8 py-4">
+                 style={{ background: 'linear-gradient(135deg, var(--color-primary-rust) 0%, var(--color-primary-rust-light) 100%)', color: '#fff', boxShadow: '0 4px 20px var(--color-primary-rust-glow)' }}
+                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base tracking-wide transition-all duration-300 hover:-translate-y-1 hover:brightness-110">
                 {slide.cta}
               </a>
               <a href="#about"
                  onClick={(e) => { e.preventDefault(); document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' }); }}
-                 className="btn-outline text-white border-white/60 hover:bg-white/20 hover:text-white font-semibold">
+                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide border-2 border-white/60 text-white hover:bg-white/20 transition-all duration-300">
                 Who We Are
               </a>
             </motion.div>
@@ -135,9 +136,10 @@ const HeroSection: React.FC = () => {
             onClick={() => goTo(i)}
             id={`hero-dot-${i}`}
             aria-label={`Go to slide ${i + 1}`}
+            style={i === current ? { background: 'var(--color-primary-rust-light)', width: '2rem', height: '0.625rem' } : {}}
             className={`rounded-full transition-all duration-400
               ${i === current
-                ? 'w-8 h-2.5 bg-gold-400'
+                ? 'w-8 h-2.5'
                 : 'w-2.5 h-2.5 bg-white/50 hover:bg-white/80'}`}
           />
         ))}

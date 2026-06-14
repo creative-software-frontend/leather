@@ -15,12 +15,12 @@ const TestimonialsSection: React.FC = () => {
   const tm = UI.testimonials;
 
   return (
-    <section id="testimonials" className="gs-section" style={{ background: 'linear-gradient(180deg,#f8f9ff 0%,#e8eaf6 100%)' }}>
+    <section id="testimonials" className="gs-section" style={{ background: 'linear-gradient(180deg, #120800 0%, #1a0f06 100%)' }}>
       <div className="gs-container">
         <motion.div className="text-center mb-14" variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}>
-          <span className="section-label">{pick(tm.label, lang)}</span>
-          <h2 className="section-title">{pick(tm.title, lang)}</h2>
-          <div className="gold-divider mx-auto" />
+          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-primary-rust-light">{pick(tm.label, lang)}</span>
+          <h2 className="text-3xl font-bold mb-4 text-white">{pick(tm.title, lang)}</h2>
+          <div className="w-16 h-1 rounded-full my-4 mx-auto bg-primary-rust" />
         </motion.div>
 
         <motion.div
@@ -32,48 +32,52 @@ const TestimonialsSection: React.FC = () => {
               key={t.id}
               onClick={() => setActive(idx)}
               variants={fadeInUp}
-              className={`gs-card p-6 cursor-pointer transition-all duration-300 ${active === idx ? 'ring-2 ring-[#C9A84C] scale-[1.02]' : ''}`}
+              className={`p-6 cursor-pointer transition-all duration-300 rounded-2xl border bg-white/5 hover:-translate-y-1
+                ${active === idx ? 'border-primary-rust scale-[1.02] shadow-lg' : 'border-white/10'}`}
+              style={active === idx ? { boxShadow: '0 0 30px var(--color-primary-rust-glow)' } : {}}
             >
               {t.badge && (
-                <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold mb-4 tracking-wider uppercase"
-                  style={{ background: 'linear-gradient(135deg,#C9A84C,#fde68a)', color: '#0D0D1A' }}>
+                <span className="badge-modern-primary inline-block mb-4">
                   ✦ {t.badge}
                 </span>
               )}
               <div className="flex items-center gap-3 mb-4">
-                <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C9A84C]" />
+                <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-primary-rust" />
                 <div>
-                  <h4 className="font-bold text-sm text-[#1a237e]">{t.name}</h4>
-                  <p className="text-xs text-gray-400">{t.role}</p>
+                  <h4 className="font-bold text-sm text-primary-rust-light">{t.name}</h4>
+                  <p className="text-xs text-gray-500">{t.role}</p>
                 </div>
               </div>
               <div className="flex gap-0.5 mb-3">
                 {[...Array(t.rating)].map((_, i) => (
-                  <span key={`${t.id}-star-${i}`} className="text-yellow-400 text-base">★</span>
+                  <span key={`${t.id}-star-${i}`} className="text-primary-rust-light text-base">★</span>
                 ))}
               </div>
-              <blockquote className="text-gray-500 text-sm leading-relaxed italic">"{t.text}"</blockquote>
+              <blockquote className="text-gray-400 text-sm leading-relaxed italic">"{t.text}"</blockquote>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Bottom Subscribe Strip */}
         <motion.div
-          className="relative rounded-3xl overflow-hidden h-56 md:h-72 img-overlay shadow-card-lg"
+          className="relative rounded-3xl overflow-hidden h-56 md:h-72 shadow-2xl"
           variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
         >
           <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
-            src={testimonialsBg} alt="Investment project view" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a237e]/15 to-[#0288D1]/55" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-[#1a237e]/90 to-[#0288D1]/85">
+            src={testimonialsBg} alt="Leather Export House production" className="w-full h-full object-cover image-motion-matrix" />
+          <div className="absolute inset-0" style={{ background: 'rgba(176,90,40,0.15)' }} />
+          <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 backdrop-panel-overlay">
             <div>
               <p className="text-white font-bold text-lg font-serif">{pick(tm.subscribe, lang)}</p>
               <p className="text-white/70 text-xs">{pick(tm.subscribeSubtitle, lang)}</p>
             </div>
             <div className="flex gap-2 w-full sm:w-auto">
               <input type="email" placeholder={pick(tm.placeholder, lang)}
-                className="flex-1 sm:w-64 px-4 py-2.5 rounded-full text-sm bg-white/10 border border-white/30 text-white placeholder-white/50 outline-none focus:border-[#C9A84C]" />
-              <button className="btn-gold text-sm font-bold px-5 py-2.5 whitespace-nowrap">{pick(tm.subscribeBtnLabel, lang)}</button>
+                className="flex-1 sm:w-64 px-4 py-2.5 rounded-full text-sm bg-white/10 border border-white/30 text-white placeholder-white/50 outline-none focus:border-primary-rust transition-colors" />
+              <button
+                className="badge-modern-primary text-sm px-5 py-2.5 whitespace-nowrap rounded-full">
+                {pick(tm.subscribeBtnLabel, lang)}
+              </button>
             </div>
           </div>
         </motion.div>

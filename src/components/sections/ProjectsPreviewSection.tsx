@@ -24,16 +24,16 @@ const ProjectsPreviewSection: React.FC = () => {
   const displayProjects = PROJECTS.slice(0, 4);
 
   return (
-    <section id="projects" className="gs-section bg-white">
+    <section id="projects" className="gs-section" style={{ background: '#120800' }}>
       <div className="gs-container">
         <motion.div
           className="text-center mb-12"
           variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
         >
-          <span className="section-label">{pick(p.label, lang)}</span>
-          <h2 className="section-title">{pick(p.title, lang)}</h2>
-          <div className="gold-divider mx-auto" />
-          <p className="section-subtitle mx-auto mt-4">{pick(p.subtitle, lang)}</p>
+          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-primary-rust-light">{pick(p.label, lang)}</span>
+          <h2 className="text-3xl font-bold mb-4 text-white">{pick(p.title, lang)}</h2>
+          <div className="w-16 h-1 rounded-full my-4 mx-auto bg-primary-rust" />
+          <p className="text-gray-500 text-base max-w-2xl mx-auto mt-4">{pick(p.subtitle, lang)}</p>
         </motion.div>
 
         <motion.div
@@ -43,25 +43,26 @@ const ProjectsPreviewSection: React.FC = () => {
           {displayProjects.map((project) => (
             <motion.div
               key={project.id} variants={fadeInUp}
-              className="gs-card group overflow-hidden cursor-pointer"
+              className="group overflow-hidden cursor-pointer rounded-2xl border border-white/10 bg-white/5 hover:-translate-y-2 transition-all duration-300"
+              style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.3)' }}
               onClick={() => setSelected(project)}
             >
               <div className="relative h-56 md:h-64 overflow-hidden">
                 <motion.img
                   whileHover={{ scale: 1.08 }} transition={{ duration: 0.8 }}
-                  src={project.image} alt={project.name} className="w-full h-full object-cover"
+                  src={project.image} alt={project.name} className="w-full h-full object-cover image-motion-matrix"
                 />
                 {project.tag && (
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#C9A84C] text-[#0D0D1A]">{project.tag}</span>
+                    <span className="badge-modern-primary text-xs">{project.tag}</span>
                   </div>
                 )}
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-lg mb-3 text-[#1a237e] font-serif">{project.name}</h3>
-                <p className="text-xs text-gray-400 mb-3">📍 {project.location || 'Bangladesh'}</p>
-                <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">{project.description}</p>
-                <button className="mt-4 text-xs font-semibold text-[#C9A84C] hover:translate-x-1 transition-transform">
+                <h3 className="font-bold text-lg mb-3 text-primary-rust-light font-serif">{project.name}</h3>
+                <p className="text-xs text-gray-500 mb-3">📍 {project.location || 'Bangladesh'}</p>
+                <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">{project.description}</p>
+                <button className="mt-4 text-xs font-semibold text-primary-rust-light hover:translate-x-1 transition-transform">
                   {pick(p.viewDetails, lang)}
                 </button>
               </div>
@@ -70,7 +71,7 @@ const ProjectsPreviewSection: React.FC = () => {
         </motion.div>
 
         <div className="text-center mt-12">
-          <Link to="/projects" className="btn-primary">{pick(p.viewAll, lang)}</Link>
+          <Link to="/category/wet-blue-splits" className="badge-modern-primary inline-flex items-center gap-2 px-6 py-3 text-sm rounded-full">{pick(p.viewAll, lang)}</Link>
         </div>
       </div>
 
@@ -84,19 +85,21 @@ const ProjectsPreviewSection: React.FC = () => {
               onClick={() => setSelected(null)}
             />
             <motion.div
-              className="bg-white rounded-3xl overflow-hidden max-w-2xl w-full shadow-2xl relative z-10"
+              className="rounded-3xl overflow-hidden max-w-2xl w-full shadow-2xl relative z-10"
+              style={{ background: '#1a0f06', border: '1px solid rgba(176,90,40,0.3)' }}
               initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
             >
               <div className="relative h-64">
                 <img src={selected.image} alt={selected.name} className="w-full h-full object-cover" />
-                <button onClick={() => setSelected(null)} className="absolute top-4 right-4 bg-black/50 text-white rounded-full w-8 h-8">×</button>
+                <button onClick={() => setSelected(null)} className="absolute top-4 right-4 bg-black/50 text-white rounded-full w-8 h-8 flex items-center justify-center">×</button>
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-black mb-2 text-[#1a237e] font-serif">{selected.name}</h3>
-                <p className="text-gray-600 mb-6">{selected.description}</p>
+                <h3 className="text-2xl font-black mb-2 text-primary-rust-light font-serif">{selected.name}</h3>
+                <p className="text-gray-400 mb-6">{selected.description}</p>
                 <button
-                  onClick={() => { setSelected(null); navigate('/send-message'); }}
-                  className="btn-primary w-full justify-center"
+                  onClick={() => { setSelected(null); navigate('/contact'); }}
+                  className="badge-modern-primary w-full justify-center text-sm py-3 rounded-full"
+                  style={{ display: 'flex' }}
                 >
                   {pick(p.bookNow, lang)}
                 </button>
