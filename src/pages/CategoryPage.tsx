@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 // Import background images
-import bgWetBlue from '../assets/image/Wet-Blue-Splits-h-product1.jpg';
+import bgWetBlue from '../assets/image/1wet-blue-splits-min.jpg';
 import bgCowCrust from '../assets/image/cow-crust222.jpg';
 import bgGoatCrust from '../assets/image/raw-selection.jpg';
 import bgFinish from '../assets/image/finish-h-product1.jpg';
