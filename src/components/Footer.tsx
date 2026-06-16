@@ -201,7 +201,7 @@ const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 w-full">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <p className="text-gray-600 text-xs lg:whitespace-nowrap">
-              © {currentYear} <strong className="text-gray-400">{lang === 'EN' ? 'OS IT Solutions Ltd' : 'ওএস আইটি সলিউশনস লিমিটেড'}</strong>{lang === 'EN' ? '. All Rights Reserved.' : '। সমস্ত অধিকার সংরক্ষিত।'}
+              © {currentYear} <strong className="text-gray-400">{lang === 'EN' ? 'Leather Export House' : 'লেদার এক্সপোর্ট হাউস লিমিটেড'}</strong>{lang === 'EN' ? '. All Rights Reserved.' : '। সমস্ত অধিকার সংরক্ষিত।'}
             </p>
           </div>
 
@@ -209,7 +209,7 @@ const Footer: React.FC = () => {
             style={{ background: 'rgba(176,90,40,0.08)', border: '1px solid rgba(176,90,40,0.2)' }}>
             <span className="text-gray-500 text-[11px] font-medium tracking-wide whitespace-nowrap">{lang === 'EN' ? 'Designed by' : 'ডিজাইন করেছে'}</span>
             <span className="w-1 h-1 rounded-full" style={{ background: 'rgba(176,90,40,0.5)' }} />
-            <span className="text-xs font-black tracking-wide text-primary-rust-light">Themedove</span>
+            <span className="text-xs font-black tracking-wide text-primary-rust-light">OS IT Solutions Ltd</span>
           </div>
         </div>
 
