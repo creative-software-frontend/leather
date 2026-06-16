@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock, ArrowUpRight } from 'lucide-react';
-import logoImg from '../assets/image/logo.png';
-import footerBg from '../assets/image/3.jfif';
+import logoImg from '../assets/image/logo-leh1-01.png';
+import footerBg from '../assets/image/2-Wet-Blue-Splits-min (1).jpg';
+import { useLanguage } from '../context/LanguageContext';
+import { UI, pick } from '../data/translations';
 
 // Leather Export House footer data
 const SOCIALS = [
@@ -29,38 +31,39 @@ const SOCIALS = [
 ];
 
 const CONTACT_INFO = [
-  { icon: MapPin, title: 'Mailing Address', value: '18/4,A Tallabagh, Tannery mor, Dhaka-1209, Bangladesh', href: 'https://maps.google.com/?q=Tallabagh+Tannery+mor+Dhaka+Bangladesh' },
-  { icon: Phone, title: 'Phone', value: '+8801818592500', href: 'tel:+8801818592500', highlight: true },
-  { icon: Mail, title: 'Email', value: 'leh.taher@gmail.com', href: 'mailto:leh.taher@gmail.com' },
-  { icon: Mail, title: 'Official Email', value: 'info@lehbd.com', href: 'mailto:info@lehbd.com' },
-  { icon: Clock, title: 'Office Hours', value: 'Saturday – Thursday: 09:00 AM – 06:00 PM (GMT+6)' },
+  { icon: MapPin, title: { en: 'Mailing Address', bn: 'ঠিকানা' }, value: { en: '18/4,A Tallabagh, Tannery mor, Dhaka-1209, Bangladesh', bn: '১৮/৪, এ টল্লাবাগ, ট্যানারি মোড়, ঢাকা-১২০৯, বাংলাদেশ' }, href: 'https://maps.google.com/?q=Tallabagh+Tannery+mor+Dhaka+Bangladesh' },
+  { icon: Phone, title: { en: 'Phone', bn: 'ফোন' }, value: { en: '+8801818592500', bn: '+৮৮০১৮১৮৫৯২৫০০' }, href: 'tel:+8801818592500', highlight: true },
+  { icon: Mail, title: { en: 'Email', bn: 'ইমেইল' }, value: { en: 'leh.taher@gmail.com', bn: 'leh.taher@gmail.com' }, href: 'mailto:leh.taher@gmail.com' },
+  { icon: Mail, title: { en: 'Official Email', bn: 'অফিসিয়াল ইমেইল' }, value: { en: 'info@lehbd.com', bn: 'info@lehbd.com' }, href: 'mailto:info@lehbd.com' },
+  { icon: Clock, title: { en: 'Office Hours', bn: 'অফিস সময়' }, value: { en: 'Saturday – Thursday: 09:00 AM – 06:00 PM (GMT+6)', bn: 'শনিবার – বৃহস্পতিবার: সকাল ৯:০০ – সন্ধ্যা ৬:০০ (GMT+6)' } },
 ];
 
 const QUICK_LINKS = [
   {
-    title: 'Our Products',
+    title: { en: 'Our Products', bn: 'আমাদের পণ্য' },
     links: [
-      { label: 'Wet Blue Splits', href: '/category/wet-blue-splits' },
-      { label: 'Cow Crust Leather', href: '/category/cow-crust-leather' },
-      { label: 'Goat Crust Leather', href: '/category/goat-crust-leather' },
-      { label: 'Finish Leather', href: '/category/finish-leather' },
-      { label: 'Shoe Section', href: '/category/shoe-section' },
+      { label: { en: 'Wet Blue Splits', bn: 'ওয়েট ব্লু স্প্লিটস' }, href: '/category/wet-blue-splits' },
+      { label: { en: 'Cow Crust Leather', bn: 'কাউ ক্রাস্ট লেদার' }, href: '/category/cow-crust-leather' },
+      { label: { en: 'Goat Crust Leather', bn: 'গোট ক্রাস্ট লেদার' }, href: '/category/goat-crust-leather' },
+      { label: { en: 'Finish Leather', bn: 'ফিনিশ লেদার' }, href: '/category/finish-leather' },
+      { label: { en: 'Shoe Section', bn: 'শু সেকশন' }, href: '/category/shoe-section' },
     ]
   },
   {
-    title: 'Company',
+    title: { en: 'Company', bn: 'কোম্পানি' },
     links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Quality Control', href: '/quality' },
-      { label: 'Gallery', href: '/gallery' },
-      { label: 'Price Request', href: '/contact' },
-      { label: 'Downloads', href: '/downloads' },
+      { label: { en: 'About Us', bn: 'আমাদের সম্পর্কে' }, href: '/about' },
+      { label: { en: 'Quality Control', bn: 'মান নিয়ন্ত্রণ' }, href: '/quality' },
+      { label: { en: 'Gallery', bn: 'গ্যালারি' }, href: '/gallery' },
+      { label: { en: 'Price Request', bn: 'মূল্য অনুরোধ' }, href: '/contact' },
+      { label: { en: 'Downloads', bn: 'ডাউনলোড' }, href: '/downloads' },
     ]
   }
 ];
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { lang } = useLanguage();
 
   return (
     <footer
@@ -102,11 +105,11 @@ const Footer: React.FC = () => {
             </Link>
 
             <p className="text-gray-400 text-sm leading-relaxed max-w-md">
-              Premium leather exporter from Bangladesh. Supplying Wet Blue Splits, Cow & Goat Crust Leather, Finish Leather, and Shoe Section to global markets with strict quality standards.
+              {pick(UI.footer.desc, lang)}
             </p>
 
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-wider font-semibold text-gray-500">Connect With Us</p>
+              <p className="text-xs uppercase tracking-wider font-semibold text-gray-500">{pick(UI.footer.connect, lang)}</p>
               <div className="flex flex-wrap gap-2.5">
                 {SOCIALS.map((s) => (
                   <a
@@ -136,7 +139,7 @@ const Footer: React.FC = () => {
                   className={`flex gap-4 p-3.5 rounded-xl transition-all duration-200 border group/card ${item.highlight
                     ? 'border-primary-rust/30 hover:border-primary-rust/50'
                     : 'border-transparent hover:border-white/10'
-                  } ${item.title.includes('Office') ? 'sm:col-span-2' : ''}`}
+                  } ${item.title.en.includes('Office') ? 'sm:col-span-2' : ''}`}
                   style={item.highlight ? { background: 'rgba(176,90,40,0.08)' } : {}}
                 >
                   <div className={`flex-shrink-0 w-10 h-10 rounded-xl border flex items-center justify-center transition-transform group-hover/card:scale-105`}
@@ -144,9 +147,9 @@ const Footer: React.FC = () => {
                     <IconComponent className="w-5 h-5" />
                   </div>
                   <div className="space-y-0.5">
-                    <h5 className="text-[11px] font-bold uppercase tracking-wider text-gray-500">{item.title}</h5>
+                    <h5 className="text-[11px] font-bold uppercase tracking-wider text-gray-500">{pick(item.title, lang)}</h5>
                     <p className={`text-xs leading-normal font-medium ${item.highlight ? 'text-white font-semibold flex items-center gap-1' : isLink ? 'text-gray-300 group-hover/card:text-white transition-colors flex items-center gap-1' : 'text-gray-400'}`}>
-                      {item.value}
+                      {pick(item.value, lang)}
                       {isLink && <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/card:opacity-100 transition-all text-primary-rust-light" />}
                     </p>
                   </div>
@@ -159,19 +162,19 @@ const Footer: React.FC = () => {
         {/* MIDDLE LAYER — Quick Links */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 py-12"
           style={{ borderBottom: '1px solid rgba(176,90,40,0.1)' }}>
-          {QUICK_LINKS.map((col) => (
-            <div key={col.title} className="space-y-4">
+          {QUICK_LINKS.map((col, idx) => (
+            <div key={idx} className="space-y-4">
               <div>
-                <h4 className="text-white font-bold text-xs tracking-widest uppercase">{col.title}</h4>
+                <h4 className="text-white font-bold text-xs tracking-widest uppercase">{pick(col.title, lang)}</h4>
                 <div className="w-6 h-[2px] mt-2 rounded-full bg-primary-rust" />
               </div>
               <ul className="space-y-2.5">
-                {col.links.map((link) => (
-                  <li key={link.label}>
+                {col.links.map((link, lIdx) => (
+                  <li key={lIdx}>
                     <Link to={link.href}
                       className="text-gray-500 text-sm hover:text-primary-rust-light transition-colors duration-200 flex items-center gap-2 group/item">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-rust opacity-0 -ml-2 group-hover/item:opacity-100 group-hover/item:ml-0 transition-all duration-200" />
-                      {link.label}
+                      {pick(link.label, lang)}
                     </Link>
                   </li>
                 ))}
@@ -181,14 +184,14 @@ const Footer: React.FC = () => {
 
           {/* Quality Standards Card */}
           <div className="sm:col-span-2 space-y-4">
-            <h4 className="text-white font-bold text-xs tracking-widest uppercase">Quality Assurance</h4>
+            <h4 className="text-white font-bold text-xs tracking-widest uppercase">{lang === 'EN' ? 'Quality Assurance' : 'মান নিশ্চিতকরণ'}</h4>
             <div className="w-6 h-[2px] mt-2 rounded-full bg-primary-rust" />
             <div className="p-4 rounded-xl space-y-2" style={{ background: 'rgba(176,90,40,0.08)', border: '1px solid rgba(176,90,40,0.2)' }}>
               <p className="text-xs text-gray-400 leading-relaxed">
-                All our leather products undergo strict QC: <strong className="text-primary-rust-light">No Knife Cuts · No Holes · Well Trimmed · No Mould · Smooth Fiber · No Vin Marks</strong>
+                {lang === 'EN' ? 'All our leather products undergo strict QC:' : 'আমাদের সব চামড়ার পণ্য কঠোর মান নিয়ন্ত্রণের মধ্য দিয়ে যায়:'} <strong className="text-primary-rust-light">{lang === 'EN' ? 'No Knife Cuts · No Holes · Well Trimmed · No Mould · Smooth Fiber · No Vin Marks' : 'কাটা দাগ নেই · ছিদ্র নেই · সুন্দরভাবে ট্রিম করা · মোল্ড নেই · মসৃণ ফাইবার · কোনো ভিন মার্ক নেই'}</strong>
               </p>
               <p className="text-[10px] font-mono text-gray-600 tracking-wider">
-                EXPORT CERTIFIED · ISO COMPLIANT · BANGLADESH LEATHER STANDARD
+                {lang === 'EN' ? 'EXPORT CERTIFIED · ISO COMPLIANT · BANGLADESH LEATHER STANDARD' : 'রপ্তানি প্রত্যয়িত · আইএসও কমপ্লায়েন্ট · বাংলাদেশ লেদার স্ট্যান্ডার্ড'}
               </p>
             </div>
           </div>
@@ -198,13 +201,13 @@ const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 w-full">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <p className="text-gray-600 text-xs lg:whitespace-nowrap">
-              © {currentYear} <strong className="text-gray-400">Leather Export House</strong>. All Rights Reserved.
+              © {currentYear} <strong className="text-gray-400">{lang === 'EN' ? 'Leather Export House' : 'লেদার এক্সপোর্ট হাউস'}</strong>{lang === 'EN' ? '. All Rights Reserved.' : '। সমস্ত অধিকার সংরক্ষিত।'}
             </p>
           </div>
 
           <div className="flex items-center gap-2.5 py-2 px-4 rounded-full flex-shrink-0"
             style={{ background: 'rgba(176,90,40,0.08)', border: '1px solid rgba(176,90,40,0.2)' }}>
-            <span className="text-gray-500 text-[11px] font-medium tracking-wide whitespace-nowrap">Designed by</span>
+            <span className="text-gray-500 text-[11px] font-medium tracking-wide whitespace-nowrap">{lang === 'EN' ? 'Designed by' : 'ডিজাইন করেছে'}</span>
             <span className="w-1 h-1 rounded-full" style={{ background: 'rgba(176,90,40,0.5)' }} />
             <span className="text-xs font-black tracking-wide text-primary-rust-light">Themedove</span>
           </div>

@@ -11,35 +11,57 @@
     --color-primary-rust-dark: #A94A1A;
     --color-primary-rust-light: #C96F3B;
     --color-primary-rust-glow: rgba(176, 90, 40, 0.15);
-    
+
     /* Content Base & Container Surface Shades */
     --color-bg-panel: rgba(176, 137, 104, 0.9);
     --color-surface-dark: #121212;
+    --color-bone-bg: #FAF9F6;
+    --color-charcoal-txt: #2C2520;
+    --color-earth-accent: #C29267;
+    --color-brown-sub: #A07855;
+    --color-badge-red: #C82333;
   }
 
   body {
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: var(--color-surface-dark);
+    background-color: var(--color-bone-bg);
+    color: var(--color-charcoal-txt);
+    font-feature-settings: "cv02", "cv04", "cv11", "ss01";
     overflow-x: hidden;
   }
 }
 
 @layer components {
+
   /* Retained container structure for main layouts */
   .gs-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl pt-16 mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .text-header-overlay {
+    @apply font-mono uppercase tracking-widest;
+  }
+
+  .table-spec-layout {
+    @apply font-sans antialiased text-sm tracking-wide text-left tabular-nums;
+  }
+
+  .backdrop-blur-tanner {
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
   }
 }
 
 @layer utilities {
+
   /* -------------------------------------------------------------
      PRIMARY THEME TEXT & SURFACE UTILITIES
      ------------------------------------------------------------- */
   .text-primary-rust {
     color: var(--color-primary-rust);
   }
-  
+
   .text-primary-rust-dark {
     color: var(--color-primary-rust-dark);
   }
@@ -169,7 +191,7 @@
     filter: grayscale(0%) sepia(0%) brightness(1.05) contrast(1.05);
     transform: scale(1.025);
   }
-  
+
   /* Semi-transparent Social Icons Utility matching image_491be5.png */
   .nav-social-icon {
     color: #D1D5DB;
@@ -191,10 +213,12 @@
     background-position: 0% 0%;
     transform: scale(1);
   }
+
   50% {
     background-position: 100% 50%;
     transform: scale(1.03);
   }
+
   100% {
     background-position: 50% 100%;
     transform: scale(1.01);
@@ -202,13 +226,14 @@
 }
 
 @keyframes dropdownFade {
-  from { 
-    opacity: 0; 
-    transform: translateY(6px); 
+  from {
+    opacity: 0;
+    transform: translateY(6px);
   }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

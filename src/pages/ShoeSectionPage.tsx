@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, type Variants } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
 import PageHero from '../components/PageHero';
-import heroImg from '../assets/image/6fa3ef6e-c22d-45b6-a859-b2108f8af13c.jfif';
+import heroImg from '../assets/image/about.jpg';
 import { useLanguage } from '../context/LanguageContext';
 import { UI, pick } from '../data/translations';
 import { Link } from 'react-router-dom';

@@ -5,14 +5,16 @@ export interface NavLink {
   children?: NavLink[];
 }
 
+type BilingualText = string | { en: string; bn: string };
+
 // ── Hero ─────────────────────────────────────────────────────────
 export interface HeroSlide {
   id: number;
-  title: string;
-  subtitle: string;
-  badge: string;
+  title: BilingualText;
+  subtitle: BilingualText;
+  badge: BilingualText;
   image: string;
-  cta: string;
+  cta: BilingualText;
   ctaLink: string;
 }
 

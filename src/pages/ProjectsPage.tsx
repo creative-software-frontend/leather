@@ -36,7 +36,8 @@ const ProjectsPage: React.FC = () => {
           <div className="text-center mb-14">
             <span className="section-label">Our Portfolio</span>
             <h1 className="section-title" style={{ fontFamily: 'Playfair Display, serif' }}>
-              All Shifa Properties Ltd Projects
+              All Leather Export House
+              B A N G L A D E S HProjects
             </h1>
             <div className="gold-divider mx-auto mt-4" />
             <p className="section-subtitle mx-auto mt-4">
@@ -144,7 +145,8 @@ const ProjectsPage: React.FC = () => {
               Own a Premium Hotel Suite or Property
             </h2>
             <p className="text-white/70 mb-8 max-w-xl mx-auto">
-              Start your halal investment journey with Shifa Properties Ltd Group — secure ownership, lifetime returns, and world-class hospitality.
+              Start your halal investment journey with Leather Export House
+              B A N G L A D E S HGroup — secure ownership, lifetime returns, and world-class hospitality.
             </p>
             <button
               onClick={() => navigate('/send-message')}

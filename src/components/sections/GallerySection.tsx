@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import img0 from '../../assets/image/0.jfif';
-import img1 from '../../assets/image/1.jfif';
-import img2 from '../../assets/image/2.jfif';
-import img3 from '../../assets/image/3.jfif';
-import img4 from '../../assets/image/4.jfif';
-import img5 from '../../assets/image/5.jfif';
-import img6 from '../../assets/image/6.jfif';
-import img7 from '../../assets/image/7.jfif';
-import img8 from '../../assets/image/8.jfif';
-import img9 from '../../assets/image/9.jfif';
+import img0 from '../../assets/image/wbs45-min.jpg';
+import img1 from '../../assets/image/Wet-Blue-Splits-h-product1.jpg';
+import img2 from '../../assets/image/1Wet-Blue-Splits-min.jpg';
+import img3 from '../../assets/image/2-Wet-Blue-Splits-min (1).jpg';
+import img4 from '../../assets/image/2-Wet-Blue-Splits-min.jpg';
+import img5 from '../../assets/image/about.jpg';
+import img6 from '../../assets/image/chrome-free-goat1.jpg';
+import img7 from '../../assets/image/cow-crust222.jpg';
+import img8 from '../../assets/image/cow-crust325.jpg';
+import img9 from '../../assets/image/1Wet-Blue-Splits-min.jpg';
 
 const GALLERY = [
   { src: img8, title: 'Padma Grand — Aerial Night View', tag: 'Hotel' },

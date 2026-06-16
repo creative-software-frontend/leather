@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import brochurePdf from '../assets/image/brochure.pdf';
-import logoImg from '../assets/image/logo.png';
+import logoImg from '../assets/image/logo-leh1-01.png';
 import { useLanguage } from '../context/LanguageContext';
 
 const content = {
   EN: {
     badge: 'Official Document',
     title: 'Download Our Brochure',
-    subtitle: 'Get the complete overview of Shifa Properties Ltd Group — our projects, investment opportunities, and vision for a better Bangladesh.',
+    subtitle: 'Get the complete overview of Leather Export House — our projects, investment opportunities, and vision for a better Bangladesh.',
     features: [
       { icon: '🏨', label: 'All Projects' },
       { icon: '📈', label: 'Investment Plans' },
@@ -80,7 +80,7 @@ const DownloadBrochure: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-drifting-texture relative">
       <div className="absolute inset-0 backdrop-panel-overlay z-0"></div>
-      
+
       {/* Hero Section */}
       <div className="relative z-10 flex-1 flex items-center justify-center px-4 pt-28 pb-16">
         <div className="w-full max-w-3xl">

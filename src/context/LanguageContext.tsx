@@ -4,23 +4,26 @@ export type Lang = 'EN' | 'BN';
 
 interface LanguageContextType {
   lang: Lang;
+  setLang: (lang: Lang) => void;
   toggleLang: () => void;
   t: (en: string, bn: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType>({
   lang: 'EN',
+  setLang: () => {},
   toggleLang: () => {},
   t: (en) => en,
 });
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLang] = useState<Lang>('EN');
-  const toggleLang = () => setLang(prev => (prev === 'EN' ? 'BN' : 'EN'));
+  const [lang, setLangState] = useState<Lang>('EN');
+  const setLang = (newLang: Lang) => setLangState(newLang);
+  const toggleLang = () => setLangState(prev => (prev === 'EN' ? 'BN' : 'EN'));
   const t = (en: string, bn: string) => (lang === 'EN' ? en : bn);
 
   return (
-    <LanguageContext.Provider value={{ lang, toggleLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, toggleLang, t }}>
       {children}
     </LanguageContext.Provider>
   );

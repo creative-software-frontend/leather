@@ -1,10 +1,11 @@
 import React from 'react';
 import PageTransition from '../components/PageTransition';
 import PageHero from '../components/PageHero';
-import heroImg from '../assets/image/6fa3ef6e-c22d-45b6-a859-b2108f8af13c.jfif';
+import heroImg from '../assets/image/about.jpg';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { UI, pick } from '../data/translations';
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -18,8 +19,8 @@ const ContactPage: React.FC = () => {
     <PageTransition id="contact-page">
       <main style={{ background: '#120800' }}>
         <PageHero
-          title="CONTACT US"
-          subtitle={lang === 'EN' ? 'Get in touch with Leather Export House' : 'লেদার এক্সপোর্ট হাউসের সাথে যোগাযোগ করুন'}
+          title={pick(UI.contact.title, lang)}
+          subtitle={pick(UI.contact.subtitle, lang)}
           imageSrc={heroImg}
         />
 
@@ -33,16 +34,14 @@ const ContactPage: React.FC = () => {
             >
               <div>
                 <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-primary-rust-light">
-                  {lang === 'EN' ? 'Reach Us' : 'আমাদের খুঁজুন'}
+                  {pick(UI.contact.reachUs, lang)}
                 </span>
                 <h2 className="text-3xl font-bold text-white mb-4">
-                  {lang === 'EN' ? "Let's Work Together" : 'একসাথে কাজ করি'}
+                  {pick(UI.contact.workTogether, lang)}
                 </h2>
                 <div className="w-16 h-1 rounded-full bg-primary-rust mb-6" />
                 <p className="text-gray-400 leading-relaxed">
-                  {lang === 'EN'
-                    ? 'We supply premium leather to global buyers. Send us your inquiry and our team will respond within 24 hours.'
-                    : 'আমরা বিশ্বের ক্রেতাদের কাছে প্রিমিয়াম চামড়া সরবরাহ করি। আপনার অনুসন্ধান পাঠান, আমাদের দল ২৪ ঘণ্টার মধ্যে সাড়া দেবে।'}
+                  {pick(UI.contact.desc, lang)}
                 </p>
               </div>
 

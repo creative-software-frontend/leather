@@ -1,6 +1,6 @@
 import { motion, type Variants } from 'framer-motion';
-import logoImg from '../../assets/image/logo.png';
-import img2 from '../../assets/image/6fa3ef6e-c22d-45b6-a859-b2108f8af13c.jfif';
+import logoImg from '../../assets/image/logo-leh1-01.png';
+import img2 from '../../assets/image/about.jpg';
 import { Counter } from '../ui/Counter';
 import { useLanguage } from '../../context/LanguageContext';
 import { UI, pick } from '../../data/translations';

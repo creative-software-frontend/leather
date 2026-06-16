@@ -16,7 +16,7 @@ export const TEAM_MEMBERS = [
     id: 1,
     name: 'Md. Moniruzzaman',
     role: 'Managing Director & CEO',
-    description: 'Visionary leader with over 15 years of experience in real estate and hotel development, driving Shifa Properties Ltd Group to become Bangladesh\'s premier investment company.',
+    description: 'Visionary leader with over 15 years of experience in real estate and hotel development, driving Leather Export House to become Bangladesh\'s premier investment company.',
     avatar: 'https://ui-avatars.com/api/?name=Md+Moniruzzaman&background=1a237e&color=fff&size=160&bold=true',
   },
   {
@@ -44,14 +44,14 @@ export const TEAM_MEMBERS = [
     id: 5,
     name: 'Shihab Shariar Khan',
     role: 'Business Development Manager',
-    description: 'Driving business partnerships and event management, connecting Shifa Properties Ltd with national and international stakeholders.',
+    description: 'Driving business partnerships and event management, connecting Leather Export Housewith national and international stakeholders.',
     avatar: 'https://ui-avatars.com/api/?name=Shihab+Khan&background=C9A84C&color=fff&size=160&bold=true',
   },
   {
     id: 6,
     name: 'Mr. Abdul Mahbud Chowdhury',
     role: 'Strategic Coordinator',
-    description: 'Ensuring seamless operations, hotel registration processes, and stakeholder coordination across all Shifa Properties Ltd projects.',
+    description: 'Ensuring seamless operations, hotel registration processes, and stakeholder coordination across all Leather Export Houseprojects.',
     avatar: 'https://ui-avatars.com/api/?name=Abdul+Chowdhury&background=0288D1&color=fff&size=160&bold=true',
   },
 ];
@@ -71,7 +71,8 @@ const TeamsSection: React.FC = () => {
           <h2 className="section-title">Our Teams</h2>
           <div className="gold-divider mx-auto mt-4" />
           <p className="section-subtitle mx-auto mt-4">
-            Meet the dedicated professionals driving Shifa Properties Ltd Group's vision for world-class hospitality and investment excellence.
+            Meet the dedicated professionals driving Leather Export House
+            B A N G L A D E S HGroup's vision for world-class hospitality and investment excellence.
           </p>
         </motion.div>
 

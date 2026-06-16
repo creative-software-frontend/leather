@@ -85,7 +85,8 @@ const SendMessagePage: React.FC = () => {
                   <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl mb-4 text-green-600">✓</div>
                   <h3 className="font-extrabold text-xl mb-2" style={{ color: '#1a237e' }}>Thank You!</h3>
                   <p className="text-gray-600 text-sm max-w-sm">
-                    Your message has been submitted successfully. A Shifa Properties Ltd Investment Specialist will contact you within 24 hours.
+                    Your message has been submitted successfully. A Leather Export House
+                    B A N G L A D E S HInvestment Specialist will contact you within 24 hours.
                   </p>
                   {/* Optional: Add a button to reset the form */}
                   <button

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 interface PageHeroProps {
   title: string;
@@ -8,6 +9,9 @@ interface PageHeroProps {
 }
 
 const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, imageSrc }) => {
+  const { lang } = useLanguage();
+  const isBn = lang === 'BN';
+
   return (
     <section className="relative h-[65vh] min-h-[420px] overflow-hidden flex items-center justify-center">
       {/* Background Image with Zoom Animation */}
@@ -31,8 +35,8 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, imageSrc }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="text-white text-5xl md:text-7xl font-black tracking-[0.25em] uppercase drop-shadow-lg"
-          style={{ fontFamily: 'Playfair Display, serif' }}
+          className={`text-white text-5xl md:text-7xl font-black drop-shadow-lg ${isBn ? '' : 'tracking-[0.25em] uppercase'}`}
+          style={{ fontFamily: isBn ? 'Hind Siliguri, sans-serif' : 'Playfair Display, serif' }}
         >
           {title}
         </motion.h1>
@@ -40,7 +44,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, imageSrc }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-          className="font-bold tracking-widest text-sm md:text-base mt-4 uppercase"
+          className={`font-bold text-sm md:text-base mt-4 ${isBn ? '' : 'tracking-widest uppercase'}`}
           style={{ color: 'var(--color-primary-rust-light)' }}
         >
           {subtitle}

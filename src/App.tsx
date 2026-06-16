@@ -17,6 +17,7 @@ import SendMessagePage from './pages/SendMessagePage';
 import WhyUsPage from './pages/WhyUsPage';
 import CategoryPage from './pages/CategoryPage';
 import ShoeSectionPage from './pages/ShoeSectionPage';
+import GalleryPage from './pages/GalleryPage';
 
 // Helper component to handle scrolling to hash elements
 const ScrollToHashElement: React.FC = () => {
@@ -64,7 +65,7 @@ const AnimatedRoutes: React.FC = () => {
         <Route path="/category/finish-leather" element={<CategoryPage />} />
         <Route path="/category/shoe-section" element={<ShoeSectionPage />} />
         <Route path="/quality" element={<WhyUsPage />} />
-        <Route path="/gallery" element={<ProjectsPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<LandingPage />} />
       </Routes>
     </AnimatePresence>

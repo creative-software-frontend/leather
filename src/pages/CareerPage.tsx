@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronRight, X, UploadCloud, Briefcase, MapPin, Clock, CheckCircle } from 'lucide-react';
-import groupImg from '../assets/image/6fa3ef6e-c22d-45b6-a859-b2108f8af13c.jfif';
+import groupImg from '../assets/image/about.jpg';
 import PageTransition from '../components/PageTransition';
 import PageHero from '../components/PageHero';
 import { useLanguage } from '../context/LanguageContext';
@@ -114,8 +114,8 @@ const CareerPage: React.FC = () => {
         {/* ── 1. WE ARE HIRING HERO BANNER ───────────────────────────────── */}
         <PageHero
           title={lang === 'EN' ? "WE ARE HIRING" : "আমরা নিয়োগ দিচ্ছি"}
-          subtitle={lang === 'EN' ? "Build Your Future with Shifa Properties Ltd Group" : "শিফা প্রপার্টিজ লিমিটেড গ্রুপের সাথে আপনার ভবিষ্যৎ গড়ুন"}
-          imageSrc={groupImg}
+          subtitle={lang === 'EN' ? "Build Your Future with Leather Export House" : "শিফা প্রপার্টিজ লিমিটেড গ্রুপের সাথে আপনার ভবিষ্যৎ গড়ুন"}
+        imageSrc={groupImg}
         />
 
         {/* ── 2. FIND YOUR OPPORTUNITY SECTION ───────────────────────────── */}
@@ -137,14 +137,14 @@ const CareerPage: React.FC = () => {
               {/* Left — Text */}
               <div className="flex-1 space-y-6">
                 <h2 className="section-title text-2xl md:text-4xl leading-tight">
-                  {lang === 'EN' ? "Find Your Opportunity with Shifa Properties Ltd Group" : "শিফা প্রপার্টিজ লিমিটেড গ্রুপে আপনার সুযোগ খুঁজুন"}
+                  {lang === 'EN' ? "Find Your Opportunity with Leather Export House" : "শিফা প্রপার্টিজ লিমিটেড গ্রুপে আপনার সুযোগ খুঁজুন"}
                 </h2>
                 <div className="gold-divider" />
                 <p className="text-[var(--color-gray)] text-sm md:text-base leading-relaxed">
                   {lang === 'EN' ?
-                    "Shifa Properties Ltd is a leading real estate/property developer company in Bangladesh. Established in 2016 and with an experience of more than 3 decades, Shifa Properties Ltd has garnered the reputation of a branded company who values hard work, honesty, talent and passion for work. Our vision is to build a world class organization and for that we are constantly on the lookout for talented people who want to build their career in one of the leading companies in the country."
-                    :
-                    "শিফা প্রপার্টিজ লিমিটেড বাংলাদেশের একটি শীর্ষস্থানীয় রিয়েল এস্টেট/প্রপার্টি ডেভেলপার কোম্পানি। ২০১৬ সালে প্রতিষ্ঠিত এবং ৩ দশকেরও বেশি অভিজ্ঞতার সাথে, শিফা প্রপার্টিজ লিমিটেড এমন একটি ব্র্যান্ডেড কোম্পানির খ্যাতি অর্জন করেছে যা কঠোর পরিশ্রম, সততা, প্রতিভা এবং কাজের প্রতি আবেগকে মূল্য দেয়। আমাদের লক্ষ্য একটি বিশ্বমানের সংস্থা গড়ে তোলা এবং এর জন্য আমরা প্রতিনিয়ত প্রতিভাবান ব্যক্তিদের খুঁজছি যারা দেশের অন্যতম শীর্ষস্থানীয় কোম্পানিতে তাদের ক্যারিয়ার গড়তে চান।"
+                    "Leather Export House is a leading real estate/property developer company in Bangladesh. Established in 2016 and with an experience of more than 3 decades, Leather Export House has garnered the reputation of a branded company who values hard work, honesty, talent and passion for work. Our vision is to build a world class organization and for that we are constantly on the lookout for talented people who want to build their career in one of the leading companies in the country."
+                  :
+                  "শিফা প্রপার্টিজ লিমিটেড বাংলাদেশের একটি শীর্ষস্থানীয় রিয়েল এস্টেট/প্রপার্টি ডেভেলপার কোম্পানি। ২০১৬ সালে প্রতিষ্ঠিত এবং ৩ দশকেরও বেশি অভিজ্ঞতার সাথে, শিফা প্রপার্টিজ লিমিটেড এমন একটি ব্র্যান্ডেড কোম্পানির খ্যাতি অর্জন করেছে যা কঠোর পরিশ্রম, সততা, প্রতিভা এবং কাজের প্রতি আবেগকে মূল্য দেয়। আমাদের লক্ষ্য একটি বিশ্বমানের সংস্থা গড়ে তোলা এবং এর জন্য আমরা প্রতিনিয়ত প্রতিভাবান ব্যক্তিদের খুঁজছি যারা দেশের অন্যতম শীর্ষস্থানীয় কোম্পানিতে তাদের ক্যারিয়ার গড়তে চান।"
                   }
                 </p>
                 <a
@@ -164,7 +164,7 @@ const CareerPage: React.FC = () => {
                 <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-[16/10] relative z-10 bg-white">
                   <img
                     src={groupImg}
-                    alt="Shifa Properties Ltd Employees Workspace View"
+                    alt="Leather Export HouseEmployees Workspace View"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
                   />
                 </div>
@@ -425,8 +425,8 @@ const CareerPage: React.FC = () => {
                     </h4>
                     <p className="text-sm text-[var(--color-gray)] max-w-sm leading-relaxed">
                       {lang === 'EN'
-                        ? 'Thank you for your interest. Shifa Properties Ltd acquisition unit has cataloged your resume and credentials successfully.'
-                        : 'আমাদের সাথে যোগাযোগ করার জন্য ধন্যবাদ। শিফা প্রপার্টিজ লিমিটেডের নিয়োগকারী দল আপনার জীবনবৃত্তান্ত সফলভাবে সংরক্ষণ করেছে।'
+                        ? 'Thank you for your interest. Leather Export House acquisition unit has cataloged your resume and credentials successfully.'
+                      : 'আমাদের সাথে যোগাযোগ করার জন্য ধন্যবাদ। শিফা প্রপার্টিজ লিমিটেডের নিয়োগকারী দল আপনার জীবনবৃত্তান্ত সফলভাবে সংরক্ষণ করেছে।'
                       }
                     </p>
                     <button
