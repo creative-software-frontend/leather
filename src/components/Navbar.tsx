@@ -40,7 +40,10 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [activeHash, setActiveHash] = useState<string>('');
+
+  // Separate states prevent desktop mouse-leave timers from closing mobile accordion elements
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -97,6 +100,7 @@ const Navbar: React.FC = () => {
     setActiveHash(location.hash);
     setMenuOpen(false);
     setOpenDropdown(null);
+    setMobileOpenDropdown(null);
   }, [location]);
 
   const handleLinkClick = (href: string) => {
@@ -110,6 +114,7 @@ const Navbar: React.FC = () => {
     }
     setMenuOpen(false);
     setOpenDropdown(null);
+    setMobileOpenDropdown(null);
   };
 
   const getHref = (href: string) => {
@@ -136,10 +141,9 @@ const Navbar: React.FC = () => {
     >
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto px-5 lg:px-8 gap-4">
 
-        {/* ── SENIOR UPGRADED LUXURY LOGO AREA ── */}
+        {/* ── LOGO AREA ── */}
         <Link to="/" className="flex items-center gap-3.5 group flex-shrink-0 select-none" id="nav-logo-left">
           <div className="relative flex items-center justify-center">
-            {/* Ambient Backlight Glow Effect on Hover */}
             <div className="absolute inset-0 bg-primary-rust/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <img
               src={logo}
@@ -187,9 +191,9 @@ const Navbar: React.FC = () => {
                       <div className="h-[2px] w-full bg-primary-rust" />
                       <div className="py-2">
                         {link.children!.map((child) => (
-                          <a
+                          <Link
                             key={child.label}
-                            href={getHref(child.href)}
+                            to={getHref(child.href)}
                             id={`nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}
                             onClick={(e) => {
                               if (child.href.startsWith('#') || child.href.includes('#')) {
@@ -208,7 +212,7 @@ const Navbar: React.FC = () => {
                           >
                             <span className="w-1.5 h-1.5 bg-primary-rust-light opacity-0 scale-50 group-hover/link:opacity-100 group-hover/link:scale-100 transition-all duration-200 flex-shrink-0" />
                             {child.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -219,8 +223,8 @@ const Navbar: React.FC = () => {
 
             return (
               <li key={link.label}>
-                <a
-                  href={getHref(link.href)}
+                <Link
+                  to={getHref(link.href)}
                   id={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={(e) => {
                     if (link.href.startsWith('#')) {
@@ -234,7 +238,7 @@ const Navbar: React.FC = () => {
                       : 'border-transparent'}`}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             );
           })}
@@ -243,13 +247,13 @@ const Navbar: React.FC = () => {
         {/* ── DESKTOP CONTROLS ── */}
         <div className="hidden lg:flex items-center gap-5 flex-shrink-0">
           <LanguageToggle />
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-widest text-white bg-primary-rust hover:bg-primary-rust-dark transition-all duration-300 shadow-lg hover:shadow-primary-rust/30 border border-primary-rust"
           >
             <PhoneCall className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>{pick(UI.nav.contact, currentLangType)}</span>
-          </a>
+          </Link>
         </div>
 
         {/* ── MOBILE MENU TOGGLE ── */}
@@ -265,6 +269,7 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
+      {/* ── MOBILE DRAWER MENU ── */}
       <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out absolute top-full left-0 w-full
         ${menuOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
         <div className="bg-black/95 backdrop-blur-2xl border-b border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.8)]">
@@ -277,18 +282,18 @@ const Navbar: React.FC = () => {
                 return (
                   <div key={link.label} className="w-full">
                     <button
-                      onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
+                      onClick={() => setMobileOpenDropdown(mobileOpenDropdown === link.label ? null : link.label)}
                       className="w-full flex items-center justify-between px-4 py-4 font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-all duration-200 border-b border-white/5"
                     >
                       <span className="uppercase tracking-widest text-xs">{link.label}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 stroke-[2] ${openDropdown === link.label ? 'rotate-180 text-primary-rust-light' : ''}`} />
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 stroke-[2] ${mobileOpenDropdown === link.label ? 'rotate-180 text-primary-rust-light' : ''}`} />
                     </button>
-                    <div className={`overflow-hidden transition-all duration-300 ${openDropdown === link.label ? 'max-h-96' : 'max-h-0'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ${mobileOpenDropdown === link.label ? 'max-h-96' : 'max-h-0'}`}>
                       <div className="pl-4 pb-2 flex flex-col border-l border-primary-rust/40 ml-4 my-2">
                         {link.children!.map((child) => (
-                          <a
+                          <Link
                             key={child.label}
-                            href={getHref(child.href)}
+                            to={getHref(child.href)}
                             onClick={(e) => {
                               if (child.href.startsWith('#') || child.href.includes('#')) {
                                 e.preventDefault();
@@ -306,7 +311,7 @@ const Navbar: React.FC = () => {
                             className="block px-4 py-3 text-sm font-bold tracking-wide text-slate-100 hover:text-primary-rust-light transition-colors duration-200 hover:bg-white/5"
                           >
                             {child.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -315,9 +320,9 @@ const Navbar: React.FC = () => {
               }
 
               return (
-                <a
+                <Link
                   key={link.label}
-                  href={getHref(link.href)}
+                  to={getHref(link.href)}
                   onClick={(e) => {
                     if (link.href.startsWith('#')) {
                       e.preventDefault();
@@ -330,24 +335,24 @@ const Navbar: React.FC = () => {
                       : 'text-slate-100 hover:bg-white/5 hover:text-white'}`}
                 >
                   {link.label}
-                </a>
+                </Link>
               );
             })}
 
-            {/* Mobile Footer Toggle Protection Layer */}
+            {/* Mobile Footer Area */}
             <div className="flex flex-col gap-4 mt-6 pt-6 border-t border-white/10">
               <div className="flex items-center justify-between py-3 px-4 bg-white/5 border border-white/10">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Language</span>
                 <LanguageToggle />
               </div>
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 onClick={() => setMenuOpen(false)}
                 className="w-full flex items-center justify-center gap-2 py-4 text-xs font-bold uppercase tracking-widest text-white bg-primary-rust hover:bg-primary-rust-dark transition-colors duration-200"
               >
                 <PhoneCall className="w-4 h-4 stroke-[2]" />
                 <span>{pick(UI.nav.contact, currentLangType)}</span>
-              </a>
+              </Link>
             </div>
 
           </div>
