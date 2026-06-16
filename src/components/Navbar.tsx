@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
       id="main-navbar"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b will-change-transform
         ${isLight
-          ? 'bg-[#0a0502]/95 backdrop-blur-xl shadow-2xl py-3 border-white/10'
+          ? 'bg-black/95 backdrop-blur-xl shadow-2xl py-3 border-white/10'
           : 'bg-transparent py-5 border-transparent'}`}
     >
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto px-5 lg:px-8 gap-4">
@@ -174,7 +174,7 @@ const Navbar: React.FC = () => {
                   <button
                     id={`nav-${link.label.toLowerCase()}-dropdown`}
                     onClick={(e) => { e.preventDefault(); setOpenDropdown(link.label); }}
-                    className="flex items-center gap-1.5 px-4 py-2 text-xs xl:text-sm font-bold tracking-widest uppercase transition-all duration-300 border border-transparent text-slate-300 hover:text-white hover:bg-white/5"
+                    className="flex items-center gap-1.5 px-4 py-2 text-xs xl:text-sm font-bold tracking-widest uppercase transition-all duration-300 border border-transparent text-slate-100 hover:text-white hover:bg-white/5"
                   >
                     {link.label}
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 stroke-[2] ${openDropdown === link.label ? 'rotate-180 text-primary-rust-light' : ''}`} />
@@ -183,7 +183,7 @@ const Navbar: React.FC = () => {
                   {/* Dropdown Menu Container */}
                   <div className={`absolute top-full left-0 pt-6 transition-all duration-300 transform
                     ${openDropdown === link.label ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
-                    <div className="w-56 bg-[#0a0502]/98 backdrop-blur-2xl shadow-2xl border border-white/10 overflow-hidden">
+                    <div className="w-56 bg-black/95 backdrop-blur-3xl shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden">
                       <div className="h-[2px] w-full bg-primary-rust" />
                       <div className="py-2">
                         {link.children!.map((child) => (
@@ -204,7 +204,7 @@ const Navbar: React.FC = () => {
                                 setOpenDropdown(null);
                               }
                             }}
-                            className="flex items-center gap-2.5 px-5 py-3 text-xs xl:text-sm font-bold tracking-wide text-slate-300 hover:bg-white/5 hover:text-primary-rust-light transition-all duration-200 group/link"
+                            className="flex items-center gap-2.5 px-5 py-3 text-xs xl:text-sm font-bold tracking-wide text-slate-100 hover:bg-white/5 hover:text-primary-rust-light transition-all duration-200 group/link"
                           >
                             <span className="w-1.5 h-1.5 bg-primary-rust-light opacity-0 scale-50 group-hover/link:opacity-100 group-hover/link:scale-100 transition-all duration-200 flex-shrink-0" />
                             {child.label}
@@ -228,7 +228,7 @@ const Navbar: React.FC = () => {
                       handleLinkClick(link.href);
                     }
                   }}
-                  className={`px-4 py-2 text-xs xl:text-sm font-bold tracking-widest uppercase transition-all duration-300 border-b-2 text-slate-300 hover:text-white hover:bg-white/5
+                  className={`px-4 py-2 text-xs xl:text-sm font-bold tracking-widest uppercase transition-all duration-300 border-b-2 text-slate-100 hover:text-white hover:bg-white/5
                     ${isActive
                       ? 'border-primary-rust-light text-white'
                       : 'border-transparent'}`}
@@ -267,7 +267,7 @@ const Navbar: React.FC = () => {
 
       <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out absolute top-full left-0 w-full
         ${menuOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
-        <div className="bg-[#0a0502]/98 backdrop-blur-2xl border-b border-white/10 shadow-2xl">
+        <div className="bg-black/95 backdrop-blur-2xl border-b border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.8)]">
           <div className="py-4 px-5 flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
               const hasChildren = link.children && link.children.length > 0;
@@ -303,7 +303,7 @@ const Navbar: React.FC = () => {
                                 setMenuOpen(false);
                               }
                             }}
-                            className="block px-4 py-3 text-sm font-bold tracking-wide text-slate-300 hover:text-primary-rust-light transition-colors duration-200 hover:bg-white/5"
+                            className="block px-4 py-3 text-sm font-bold tracking-wide text-slate-100 hover:text-primary-rust-light transition-colors duration-200 hover:bg-white/5"
                           >
                             {child.label}
                           </a>
@@ -327,7 +327,7 @@ const Navbar: React.FC = () => {
                   className={`block px-4 py-4 font-bold transition-all duration-200 border-b border-white/5 uppercase tracking-widest text-xs
                     ${isActive
                       ? 'text-primary-rust-light font-bold bg-white/5'
-                      : 'text-slate-200 hover:bg-white/5 hover:text-white'}`}
+                      : 'text-slate-100 hover:bg-white/5 hover:text-white'}`}
                 >
                   {link.label}
                 </a>

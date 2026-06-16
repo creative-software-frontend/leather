@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
                   className={`flex gap-4 p-3.5 rounded-xl transition-all duration-200 border group/card ${item.highlight
                     ? 'border-primary-rust/30 hover:border-primary-rust/50'
                     : 'border-transparent hover:border-white/10'
-                  } ${item.title.en.includes('Office') ? 'sm:col-span-2' : ''}`}
+                    } ${item.title.en.includes('Office') ? 'sm:col-span-2' : ''}`}
                   style={item.highlight ? { background: 'rgba(176,90,40,0.08)' } : {}}
                 >
                   <div className={`flex-shrink-0 w-10 h-10 rounded-xl border flex items-center justify-center transition-transform group-hover/card:scale-105`}
@@ -201,7 +201,7 @@ const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 w-full">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <p className="text-gray-600 text-xs lg:whitespace-nowrap">
-              © {currentYear} <strong className="text-gray-400">{lang === 'EN' ? 'Leather Export House' : 'লেদার এক্সপোর্ট হাউস'}</strong>{lang === 'EN' ? '. All Rights Reserved.' : '। সমস্ত অধিকার সংরক্ষিত।'}
+              © {currentYear} <strong className="text-gray-400">{lang === 'EN' ? 'OS IT Solutions Ltd' : 'ওএস আইটি সলিউশনস লিমিটেড'}</strong>{lang === 'EN' ? '. All Rights Reserved.' : '। সমস্ত অধিকার সংরক্ষিত।'}
             </p>
           </div>
 
